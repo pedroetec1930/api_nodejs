@@ -22,28 +22,28 @@ app.post("/users", async (req,res) => {
     res.status(201)     .send("Usuário criado!")
 })
 
-// app.put("/users/:id", async (req,res) => {
-//     await prisma.user.update({
-//         where : {
-//             id : req.params.id
-//         },
-//         data: {
-//             name : req.body.name,
-//             age : Number(req.body.age),
-//             email: req.body.email
-//         }
-//     })
-//     res.status(200)     .send("Usuário editado!")
-// })
+app.put("/users/:id", async (req,res) => {
+    await prisma.user.update({
+        where : {
+            id : req.params.id
+        },
+        data: {
+            name : req.body.name,
+            age : Number(req.body.age),
+            email: req.body.email
+        }
+    })
+    res.status(200)     .send("Usuário editado!")
+})
 
-// app.delete("/users/:id", async (req,res) => {
-//     await prisma.user.delete({
-//         where : {
-//             id : req.params.id
-//         }
-//     })
-//     res.status(200)     .send("Usuário deletado!")
-// })
+app.delete("/users/:id", async (req,res) => {
+    await prisma.user.delete({
+        where : {
+            id : req.params.id
+        }
+    })
+    res.status(200)     .send("Usuário deletado!")
+})
 
 app.listen(3000, () => {
     console.log("Servidor rodando!")
